@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QR CODE Generator</title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+      .container {
+        /* background-color: blue; */
+        background: linear-gradient(45deg, blue, #f98e3c);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        flex-direction: column;
+      }
+      .input {
+        background-color: white;
+        padding: 50px 100px;
+        text-align: center;
+        border: 5px solid black;
+        border-radius: 20px;
+      }
+      p {
+        font-size: 200%;
+      }
+      input {
+        height: 50px;
+        width: 225px;
+        border-radius: 10px;
+      }
+      button {
+        font-size: 20px;
+        color: rgb(3, 199, 254);
+        background-color: blue;
+        height: 50px;
+        width: 225px;
+        border-radius: 10px;
+        margin-top: 10px;
+      }
+
+      button:hover {
+        color: black;
+        background-color: white;
+        /* transform: scale(1.05); */
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="input">
+        <p>Qr code Generate</p>
+        <input type="text" id="inputtext" placeholder="Enter url or text" />
+        <br />
+        <button onclick="generate()">Generate QR</button>
+      </div>
+      <div class="qr">
+        <div class="img"><img src="" id="imgqr" /> <br /><br /></div>
+      </div>
+    </div>
+
+    <script>
+      // let a;   undefined
+      // int a;   defined
+      let inputtext = document.getElementById("inputtext");
+      let img = document.getElementById("imgqr");
+      function generate() {
+        imgqr.src =
+          "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" +
+          inputtext.value;
+        inputtext.value = "";
+      }
+    </script>
+  </body>
+</html>
